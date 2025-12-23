@@ -56,6 +56,14 @@ async function fetchDriveFiles() {
 
         // Simple & working solution: add your file IDs here manually (easy and reliable)
         const fileIds = [
+
+           '1W168rcQZ7UIWurOKtxmZedBQ4rltde92',
+            '10W-OmLgywndijD5Fe2KdG-8t-oyQoVG5',
+           '13ESeJZaYFF0L60YZCbJ5q_ZyjEjbQUYl',
+           '1v_SJPFYF4dKmTPQWpBybAtDimvWmYz0x',
+          '1qDUjeWsAK5sKXclHhrcgjkn2R5ga-xlE',
+      '1miy9tHnDn52VaIVVDTOS7OF5fBCMDPvF',
+       '1GnGXEa3MGuD7yMa7mD5HL4QtjRQwTQ3e'
             // Paste your file IDs here, e.g.:
             // '1aBcDeFgHiJkLmNoPqRsTuVwXyZ123456',
             // '1xYzAbCdEfGhIjKlMnOpQrStUvWx789012'
@@ -137,3 +145,4 @@ function parseExcelData(data, filename) {
 }
 
 // ... (include all other functions from previous script.js: loadSettings, trackCargo, contact form, adminAuth, etc.)
+
