@@ -1,0 +1,79 @@
+:root {
+    --primary-color: #61210F;
+    --secondary-color: #FDF0D5;
+    --dark-color: #1B1B19;
+    --accent-blue: #0071C0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--secondary-color);
+}
+
+.hero {
+    background: linear-gradient(rgba(97,33,15,0.9), rgba(97,33,15,0.85)), url('https://images.unsplash.com/photo-1558618047-3c8c76ca3e71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 150px 0;
+}
+
+.service-card {
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.navbar {
+    background: var(--primary-color) !important;
+}
+
+.navbar-brand img {
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-blue);
+}
+
+footer {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #4e1a0c;
+}
+
+.text-primary { color: var(--primary-color) !important; }
+.bg-primary { background-color: var(--primary-color) !important; color: white; }
+.service-card i { color: var(--accent-blue); }
+.card { background: white; }
+.hero p, .hero h1 { text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+
+.result-card {
+    border-left: 4px solid var(--accent-blue);
+}
+
+.border-dashed {
+    border: 3px dashed #ccc;
+    border-radius: 12px;
+}
+
+.message-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.message-time {
+    font-size: 0.85rem;
+    color: #666;
+}
