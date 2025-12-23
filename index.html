@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JEK KARGO - Xitoydan O‘zbekistonga yuk tashish</title>
-    <!-- Bootstrap -->
+    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- XLSX -->
+    <!-- XLSX for Excel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -39,7 +39,7 @@
 
 <!-- Main Content -->
 <main>
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section id="home" class="hero text-center">
         <div class="container">
             <h1 class="display-4 fw-bold mb-4">Xitoydan O‘zbekistonga tez yuk tashish</h1>
@@ -99,7 +99,7 @@
         </div>
     </section>
 
-    <!-- Calculator -->
+    <!-- Price Calculator -->
     <section id="calculator" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-5">Narx hisoblash</h2>
@@ -139,7 +139,7 @@
         </div>
     </section>
 
-    <!-- Tracking -->
+    <!-- Tracking Section -->
     <section id="tracking" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5">Yukingizni kuzatish</h2>
@@ -205,19 +205,19 @@
 </footer>
 
 <!-- Admin Login Modal -->
-<div class="modal fade" id="adminLoginModal" tabindex="-1">
+<div class="modal fade" id="adminLoginModal" tabindex="-1" aria-labelledby="adminLoginLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Admin Panel - Kirish</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title" id="adminLoginLabel">Admin Panel - Kirish</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <label class="form-label">Parol:</label>
-                <input type="password" class="form-control" id="adminPassword" onkeypress="if(event.key==='Enter') adminAuth()">
+                <input type="password" class="form-control" id="adminPassword" placeholder="Parolni kiriting" onkeypress="if(event.key==='Enter') adminAuth()">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
                 <button type="button" class="btn btn-primary" onclick="adminAuth()">Kirish</button>
             </div>
         </div>
@@ -235,27 +235,50 @@
             <div class="card-body">
                 <!-- Stats -->
                 <div class="row mb-4 text-center">
-                    <div class="col-md-3"><div class="card p-3"><h5>Tashriflar</h5><h4 id="totalVisits">0</h4></div></div>
-                    <div class="col-md-3"><div class="card p-3"><h5>Qidiruvlar</h5><h4 id="totalSearches">0</h4></div></div>
-                    <div class="col-md-3"><div class="card p-3"><h5>Yuklangan fayllar</h5><h4 id="loadedFilesCount">0</h4></div></div>
-                    <div class="col-md-3"><div class="card p-3"><h5>Jami kodlar</h5><h4 id="totalCodes">0</h4></div></div>
-                </div>
-
-                <!-- Loaded Files List -->
-                <h4>Yuklangan fayllar (Google Drive)</h4>
-                <div id="loadedFilesList" class="border p-3 rounded mb-4" style="background:#f8f9fa; max-height:300px; overflow-y:auto;">
-                    <p class="text-muted">Fayllar yuklanmoqda...</p>
+                    <div class="col-md-3">
+                        <div class="card p-3">
+                            <h5>Jami tashriflar</h5>
+                            <h4 id="totalVisits">0</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3">
+                            <h5>Qidirilgan kodlar</h5>
+                            <h4 id="totalSearches">0</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3">
+                            <h5>Yuklangan fayllar</h5>
+                            <h4 id="uploadedFiles">0</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3">
+                            <h5>Jami trek kodlar</h5>
+                            <h4 id="totalCodes">0</h4>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Client Messages -->
                 <h4>Mijoz xabarlari</h4>
-                <div id="clientMessages" class="border p-3 rounded mb-4" style="background:#f8f9fa; max-height:400px; overflow-y:auto;">
+                <div id="clientMessages" class="border p-3 rounded mb-4" style="max-height:400px; overflow-y:auto; background:#f8f9fa;">
                     <p class="text-muted">Hali xabar yo‘q</p>
                 </div>
 
+                <!-- File Upload -->
+                <h4>Excel Fayl Yuklash</h4>
+                <div class="border-dashed p-5 text-center mb-4" onclick="document.getElementById('fileInput').click()" style="cursor:pointer;">
+                    <p>📁 Faylni bosing yoki sudrab keling</p>
+                    <small>Format: "Avia 24.xlsx" yoki "Avto 29.xlsx"</small>
+                </div>
+                <input type="file" id="fileInput" accept=".xlsx,.xls" style="display:none;" onchange="uploadFile(event)">
+                <div id="fileList" class="mt-3"></div>
+
                 <!-- Settings -->
-                <h4>Sozlamalar</h4>
-                <div class="row g-3 mb-4">
+                <h4 class="mt-5">Sozlamalar</h4>
+                <div class="row g-3">
                     <div class="col-md-4">
                         <label>Dollar kursi (so'm):</label>
                         <div class="input-group">
@@ -280,14 +303,16 @@
                 </div>
 
                 <!-- Activity Log -->
-                <h4>Faoliyat jurnali</h4>
+                <h4 class="mt-5">Faoliyat jurnali</h4>
                 <div id="activityLog" class="border p-3 rounded" style="max-height:400px; overflow-y:auto; background:#f8f9fa;"></div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript -->
 <script src="script.js"></script>
 </body>
 </html>
