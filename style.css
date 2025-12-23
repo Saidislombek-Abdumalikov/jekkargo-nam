@@ -63,11 +63,6 @@ footer {
     border-left: 4px solid var(--accent-blue);
 }
 
-.border-dashed {
-    border: 3px dashed #ccc;
-    border-radius: 12px;
-}
-
 .message-item {
     border-bottom: 1px solid #eee;
     padding: 10px 0;
@@ -76,4 +71,11 @@ footer {
 .message-time {
     font-size: 0.85rem;
     color: #666;
+}
+
+.file-item-admin {
+    padding: 10px;
+    background: #f1f3f5;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
